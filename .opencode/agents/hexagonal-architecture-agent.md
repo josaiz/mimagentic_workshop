@@ -12,11 +12,7 @@ permission:
     "git diff*": allow
     "find services/investment-service*": allow
   edit: ask
-  webfetch:
-    "https://docs.spring.io/**": allow
-    "https://docs.enterprise.spring.io/**": allow
-    "https://spring.io/**": allow
-    "*": ask
+  webfetch: allow
   skill:
     hexagonal-architecture: allow
     legacy-refactor-safety: allow
@@ -33,6 +29,7 @@ Primary responsibility:
 - Preserve external behavior and event contracts exactly unless the user explicitly asks for a product change.
 - Keep package names boring and teachable.
 - Avoid abstracting every class; add ports only where the core depends on an outside effect.
+- When Spring framework behavior matters, use official Spring docs only: `docs.spring.io`, `docs.enterprise.spring.io`, or `spring.io`.
 
 For the `investment-service` backlog story, preserve:
 

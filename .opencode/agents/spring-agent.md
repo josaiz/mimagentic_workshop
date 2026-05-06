@@ -13,11 +13,7 @@ permission:
     "cd services/investment-service && mvn -q -Djava.version=${JAVA_TEST_VERSION:-23} test": allow
     "cd services/mortgage-service && mvn -q -Djava.version=${JAVA_TEST_VERSION:-23} test": allow
   edit: ask
-  webfetch:
-    "https://docs.spring.io/**": allow
-    "https://docs.enterprise.spring.io/**": allow
-    "https://spring.io/**": allow
-    "*": ask
+  webfetch: allow
   skill:
     banking-domain: allow
     event-driven-design: allow
