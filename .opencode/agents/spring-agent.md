@@ -13,10 +13,18 @@ permission:
     "cd services/investment-service && mvn -q -Djava.version=${JAVA_TEST_VERSION:-23} test": allow
     "cd services/mortgage-service && mvn -q -Djava.version=${JAVA_TEST_VERSION:-23} test": allow
   edit: ask
+  webfetch:
+    "https://docs.spring.io/**": allow
+    "https://docs.enterprise.spring.io/**": allow
+    "https://spring.io/**": allow
+    "*": ask
   skill:
     banking-domain: allow
     event-driven-design: allow
+    hexagonal-architecture: allow
+    legacy-refactor-safety: allow
     service-boundaries: allow
+    spring-boot-components: allow
     testing-strategy: allow
 ---
 
@@ -28,6 +36,7 @@ You work inside:
 
 Implementation rules:
 
+- Prefer official Spring Framework, Spring Boot, and Spring for Apache Kafka documentation when checking framework behavior. Use `webfetch` against `docs.spring.io`, `docs.enterprise.spring.io`, or `spring.io` before guessing about current Spring APIs.
 - Preserve the shared banking event envelope exactly.
 - Use `BigDecimal` for money and keep decimal comparisons explicit.
 - Keep Spring Boot patterns simple enough to teach in a workshop.
@@ -38,6 +47,7 @@ Implementation rules:
 Handoff rules:
 
 - Ask `event-architect-agent` before adding or renaming event types.
+- Ask `hexagonal-architecture-agent` before a package-boundary or ports/adapters refactor.
 - Ask `qa-agent` for unit tests around business rules and rejected flows.
 - Ask `security-agent` for amount/currency/replay concerns when financial state changes.
 

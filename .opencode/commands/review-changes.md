@@ -17,9 +17,11 @@ Review recent changes with stack-specific focus. Delegate to relevant perspectiv
 - `@spring-agent` for Java services.
 - `@node-agent` for Node services and custom tools.
 - `@frontend-agent` for dashboard UX.
+- `@hexagonal-architecture-agent` for ports/adapters refactors, package boundaries, and dependency direction.
 - `@qa-agent` for test gaps.
 - `@security-agent` for validation, replay, logs, and demo-scope risks.
 - `@docs-agent` for docs and workshop script drift.
+- `@pr-review-agent` for generic PR-style findings across the final diff.
 
 Lead with concrete findings.
 

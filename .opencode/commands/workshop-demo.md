@@ -23,8 +23,9 @@ Run the workshop arc:
 7. Trigger salary, investment, mortgage, external transfer, rejected transfer, and insufficient funds.
 8. Use `/trace-correlation <id>` to reconstruct a real flow.
 9. Run `/event-contract-review`.
-10. Demonstrate `/design-flow "credit card payment from the main account"`.
-11. Run `/security-review`.
-12. Close with `/workshop-readiness`.
+10. Demonstrate `/design-investment-hexagonal` as the realistic backlog-ticket design step.
+11. Show `/refactor-investment-hexagonal` as the build-mode entrypoint, but only run it if the live coding segment has enough time.
+12. Run `/security-review`.
+13. Close with `/workshop-readiness`.
 
 Explain what each step teaches about Plan vs Build, subagents, hidden agents, skills, custom commands, shell-output grounding, permission prompts, formatters, and custom tools.

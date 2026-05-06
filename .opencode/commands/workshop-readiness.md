@@ -27,9 +27,11 @@ Check readiness across:
 - `opencode.json`
 - `docs/OPENCODE_GUIDE.md`
 - `docs/WORKSHOP_SCRIPT.md`
+- `docs/BACKLOG_STORIES.md`
 - README OpenCode section
 - focused test commands
 - manual demo path
+- backlog story commands `/design-investment-hexagonal` and `/refactor-investment-hexagonal`
 
 Recommended commands:
 

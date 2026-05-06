@@ -26,6 +26,7 @@ Show:
 - `.opencode/skills/`
 - `.opencode/commands/`
 - `.opencode/tools/banking.ts`
+- `docs/BACKLOG_STORIES.md`
 - `infra/docker-compose.yml`
 - `services/`
 - `apps/web-dashboard`
@@ -119,32 +120,44 @@ Teaching point:
 - `!command` output grounds the prompt in current repo state.
 - Permissions decide which commands/tools can run without approval.
 
-## 45-55 Min: Design A New Use Case
+## 45-55 Min: Backlog Story Refactor
+
+Frame the realistic backlog task:
+
+```text
+Refactor investment-service to lightweight hexagonal architecture.
+```
 
 Run Plan-style design first:
 
 ```text
-/design-flow "credit card payment from the main account"
+/design-investment-hexagonal
 ```
 
 Discuss the output:
 
-- event names,
-- payload additions,
-- owning service,
-- account reservation/commit/release behavior,
-- dashboard action and timeline,
+- current coupling,
+- target package layout,
+- ports and adapters,
+- Spring component wiring,
+- behavior preservation,
 - focused tests,
-- docs updates,
-- security/replay concerns.
+- security/replay concerns,
+- overengineering guardrails.
 
 Then show the Build-style entrypoint:
 
 ```text
-/add-use-case "credit card payment from the main account"
+/refactor-investment-hexagonal
 ```
 
-Teaching point: event design comes before implementation, and one command can coordinate several specialized agents.
+Do not run the full refactor unless you want the live coding portion to continue beyond the one-hour script. If you do run it, finish with:
+
+```text
+/review-changes
+```
+
+Teaching point: a backlog refactor can be handled by coordinated agents: architecture, Spring, QA, security, and generic PR review. The code stays in its “before” shape until the build command is actually run.
 
 ## 55-60 Min: Readiness And Wrap
 
@@ -168,4 +181,5 @@ Optional final checks before a live session:
 npx prettier --check opencode.json ".opencode/**/*.md" ".opencode/tools/*.ts" docs/OPENCODE_GUIDE.md docs/WORKSHOP_SCRIPT.md README.md
 npm test -w @agentic-banking-lab/event-contracts
 npm run build -w @agentic-banking-lab/web-dashboard
+cd services/investment-service && mvn -q -Djava.version=${JAVA_TEST_VERSION:-23} test
 ```

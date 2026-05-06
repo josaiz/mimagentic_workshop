@@ -36,8 +36,12 @@
       "docker-compose-troubleshooting": "allow",
       "event-driven-design": "allow",
       "frontend-visualization": "allow",
+      "hexagonal-architecture": "allow",
+      "legacy-refactor-safety": "allow",
+      "pr-review-checklist": "allow",
       "security-review": "allow",
       "service-boundaries": "allow",
+      "spring-boot-components": "allow",
       "testing-strategy": "allow",
       "workshop-facilitation": "allow"
     },
@@ -68,7 +72,9 @@
         "task": {
           "*": "ask",
           "contract-drift-agent": "allow",
-          "flow-tracer-agent": "allow"
+          "flow-tracer-agent": "allow",
+          "hexagonal-architecture-agent": "allow",
+          "pr-review-agent": "allow"
         }
       }
     },
@@ -78,6 +84,8 @@
           "*": "ask",
           "contract-drift-agent": "allow",
           "flow-tracer-agent": "allow",
+          "hexagonal-architecture-agent": "allow",
+          "pr-review-agent": "allow",
           "qa-agent": "allow",
           "security-agent": "ask"
         }

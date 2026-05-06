@@ -22,14 +22,16 @@ Primary facilitator:
 Visible subagents:
 
 - `event-architect-agent`: event contracts, naming, envelopes, causation, idempotency, and service boundaries.
+- `hexagonal-architecture-agent`: ports/adapters refactors, package boundaries, dependency direction, and overengineering guardrails.
 - `node-agent`: Node services, TypeScript, Express, Kafka, SSE, orchestrator, event log, and notification logic.
-- `spring-agent`: Java/Spring account, mortgage, and investment services.
+- `spring-agent`: Java/Spring account, mortgage, and investment services, with official Spring documentation access for framework questions.
 - `frontend-agent`: Next.js dashboard actions, service health, event timeline, and correlation detail.
 - `qa-agent`: focused tests, smoke paths, and acceptance scenarios.
 - `security-agent`: validation, secrets, replay/idempotency, logs, and demo-safe risk review.
 - `platform-agent`: Docker Compose, Redpanda, PostgreSQL, ports, health checks, and logs.
 - `data-agent`: demo data and scenario generation through public HTTP APIs.
 - `docs-agent`: README, architecture docs, event docs, workshop guide, and diagrams.
+- `pr-review-agent`: generic PR-style review for local diffs, regression risk, architecture drift, tests, security, and docs.
 
 Hidden diagnostic subagents:
 
@@ -46,7 +48,11 @@ Existing domain skills were expanded into procedures:
 - `testing-strategy`
 - `security-review`
 - `frontend-visualization`
+- `hexagonal-architecture`
+- `legacy-refactor-safety`
+- `pr-review-checklist`
 - `docker-compose-troubleshooting`
+- `spring-boot-components`
 - `workshop-facilitation`
 
 Additional skills:
@@ -79,6 +85,8 @@ Event and flow work:
 /event-contract-review
 /design-flow "credit card payment from the main account"
 /add-use-case "credit card payment from the main account"
+/design-investment-hexagonal
+/refactor-investment-hexagonal
 /trace-correlation <correlation-id>
 /triage-flow external-transfer
 /test-flow mortgage-repayment
@@ -99,6 +107,26 @@ Commands demonstrate OpenCode command features:
 - `!command` shell-output injection for safe repository facts.
 - Delegation to visible and hidden subagents.
 
+## Backlog Story Demo
+
+The prepared backlog story is:
+
+```text
+Refactor `investment-service` to lightweight hexagonal architecture while preserving current Kafka behavior.
+```
+
+Use this as the realistic “ticket arrives from the backlog” exercise:
+
+```text
+/design-investment-hexagonal
+/refactor-investment-hexagonal
+/review-changes
+```
+
+The first command designs the refactor without editing files. The second command is the build-mode entrypoint that should only touch `services/investment-service`. The generic `/review-changes` command remains the review entrypoint after the refactor.
+
+Acceptance criteria are documented in [BACKLOG_STORIES.md](BACKLOG_STORIES.md).
+
 ## Permissions And Formatters
 
 `opencode.json` makes safety visible:
@@ -108,6 +136,7 @@ Commands demonstrate OpenCode command features:
 - Destructive git commands such as `git reset` and `git checkout --` are denied.
 - Skills are explicitly allowed for the lab.
 - Hidden subagents are available through task permissions where they are useful.
+- `spring-agent` and `hexagonal-architecture-agent` can fetch official Spring documentation from `docs.spring.io`, `docs.enterprise.spring.io`, and `spring.io`; other URLs ask first.
 
 The formatter section uses Prettier for `.md`, `.json`, `.ts`, `.tsx`, `.js`, and `.mjs` so generated workshop assets stay consistent:
 
@@ -132,5 +161,5 @@ Suggested live sequence:
 /generate-demo-data
 /trace-correlation <id>
 /event-contract-review
-/design-flow "credit card payment from the main account"
+/design-investment-hexagonal
 ```

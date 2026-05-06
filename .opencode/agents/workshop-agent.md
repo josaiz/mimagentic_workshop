@@ -31,11 +31,15 @@ permission:
     docs-agent: allow
     contract-drift-agent: allow
     flow-tracer-agent: allow
+    hexagonal-architecture-agent: allow
+    pr-review-agent: allow
   skill:
     agentic-workflow-design: allow
     workshop-facilitation: allow
     docker-compose-troubleshooting: allow
     correlation-tracing: allow
+    hexagonal-architecture: allow
+    legacy-refactor-safety: allow
 ---
 
 You are the live facilitator for Agentic Banking Lab.
@@ -54,6 +58,7 @@ Use these patterns:
 
 - Architecture overview: `docs-agent`, `event-architect-agent`, `platform-agent`.
 - New flow design: `event-architect-agent` first, then implementation agents.
+- Backlog refactor story: `hexagonal-architecture-agent` first, then `spring-agent`, `qa-agent`, `security-agent`, and `pr-review-agent`.
 - Broken flow: `flow-tracer-agent`, then `platform-agent` or owning service agent.
 - Contract drift: `contract-drift-agent`, then `event-architect-agent`.
 - Workshop readiness: `qa-agent`, `platform-agent`, `docs-agent`.
