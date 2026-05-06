@@ -2,6 +2,123 @@
 
 This file captures workshop-ready backlog tasks that demonstrate agent orchestration on realistic engineering work.
 
+## Backlog Intake Flow
+
+Paste a Miro/Jira-style task into the intake command:
+
+```text
+/prepare-backlog-task "Add a Money Allocation chart to the dashboard"
+```
+
+The `backlog-task-agent` should:
+
+- parse the task;
+- inspect the repo;
+- reuse existing agents and skills where possible;
+- create one or two development commands;
+- update this file with acceptance criteria;
+- leave product implementation for the generated command.
+
+Use `/review-changes` after any generated development command has made code changes.
+
+## Dashboard Money Allocation Chart
+
+### Ticket
+
+```text
+Add a “Money Allocation” chart to the dashboard.
+
+As a workshop user, I want to see a demo allocation chart split between cash, completed investment contributions, and completed mortgage repayments, so I can understand the financial picture created by the event stream.
+```
+
+### Why This Works For The Workshop
+
+This is a small visual frontend task. It demonstrates how agents can inspect existing dashboard state, reuse loaded events, and add a chart without introducing a charting dependency.
+
+### Suggested Intake
+
+```text
+/prepare-backlog-task "Add a Money Allocation chart to the dashboard. Show Cash from availableBalance, Investments from FundContributionCompleted events, and Mortgage from MortgageRepaymentCompleted events. Do not add a charting library."
+```
+
+Expected generated command:
+
+```text
+/add-dashboard-allocation-chart
+```
+
+### Acceptance Criteria
+
+- Show a visible `Money Allocation` panel on the dashboard.
+- Use `account.availableBalance` for Cash.
+- Sum loaded `FundContributionCompleted` events for Investments.
+- Sum loaded `MortgageRepaymentCompleted` events for Mortgage.
+- Use existing dashboard events and account state.
+- Avoid external chart libraries; use React/CSS.
+- Keep the dashboard responsive.
+
+### Out Of Scope
+
+- Real net-worth calculation.
+- Persisted investment or mortgage balances.
+- New backend endpoints.
+- New event contracts.
+
+### Verification
+
+```bash
+npm run build -w @agentic-banking-lab/web-dashboard
+```
+
+## Account Spending Power Endpoint
+
+### Ticket
+
+```text
+Create a spending power endpoint in account-service.
+
+As a workshop user, I want to check whether an account can reserve a requested amount before starting a movement, so I can understand how available funds are validated.
+```
+
+### Why This Works For The Workshop
+
+This is a small backend task. It exercises Spring controller design, validation, reuse of `AccountRules.canReserve`, and focused tests without changing Kafka contracts.
+
+### Suggested Intake
+
+```text
+/prepare-backlog-task "Create GET /accounts/{accountId}/spending-power?amount=120&currency=EUR in account-service. Reuse AccountRules.canReserve and return whether funds are available."
+```
+
+Expected generated command:
+
+```text
+/add-account-spending-power-endpoint
+```
+
+### Acceptance Criteria
+
+- Add `GET /accounts/{accountId}/spending-power?amount=120&currency=EUR`.
+- Return `accountId`, `currency`, `requestedAmount`, `availableBalance`, `canReserve`, and `reason`.
+- Use `AVAILABLE_FUNDS` when the reservation can be made.
+- Use `INSUFFICIENT_FUNDS` when the balance does not cover the amount.
+- Return `404` when the account does not exist.
+- Validate positive amount and currency `EUR`.
+- Reuse `AccountRules.canReserve`.
+
+### Out Of Scope
+
+- Reserving money.
+- Publishing events.
+- Changing account schema.
+- Supporting currencies other than `EUR`.
+
+### Verification
+
+```bash
+cd services/account-service && mvn -q -Djava.version=${JAVA_TEST_VERSION:-23} test
+```
+
 ## Investment Hexagonal Refactor
 
 ### Ticket

@@ -25,6 +25,8 @@ Check readiness across:
 - `.opencode/commands`
 - `.opencode/tools`
 - `opencode.json`
+- `backlog-task-agent`
+- `/prepare-backlog-task`
 - `docs/OPENCODE_GUIDE.md`
 - `docs/WORKSHOP_SCRIPT.md`
 - `docs/BACKLOG_STORIES.md`
