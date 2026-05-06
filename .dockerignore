@@ -1,0 +1,13 @@
+.git
+.DS_Store
+.idea
+node_modules
+**/node_modules
+**/.next
+**/dist
+**/target
+coverage
+.env
+.env.local
+*.log
+infra/postgres/data
