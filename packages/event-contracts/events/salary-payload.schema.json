@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-banking-lab.local/events/salary-payload.schema.json",
+  "title": "Salary Received Payload",
+  "type": "object",
+  "required": ["accountId", "amount", "currency", "employerName"],
+  "additionalProperties": false,
+  "properties": {
+    "accountId": { "type": "string", "minLength": 1 },
+    "amount": { "type": "number", "exclusiveMinimum": 0 },
+    "currency": { "const": "EUR" },
+    "employerName": { "type": "string", "minLength": 1 }
+  }
+}

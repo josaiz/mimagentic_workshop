@@ -1,0 +1,16 @@
+.DS_Store
+.idea/
+node_modules/
+.next/
+dist/
+build/
+target/
+coverage/
+.env
+.env.local
+*.log
+*.tmp
+__pycache__/
+.pytest_cache/
+.venv/
+infra/postgres/data/

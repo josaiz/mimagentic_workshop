@@ -1,0 +1,360 @@
+:root {
+  --bg: #f6f7f3;
+  --panel: #ffffff;
+  --ink: #17201c;
+  --muted: #68736e;
+  --line: #dbe1dc;
+  --green: #16764f;
+  --green-soft: #dcf6ea;
+  --red: #ad2f2f;
+  --red-soft: #ffe1df;
+  --yellow: #85620c;
+  --yellow-soft: #fff0c2;
+  --blue: #285d8f;
+  --blue-soft: #dcecff;
+  --teal: #0f766e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  width: min(1500px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 18px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 15px;
+}
+
+.topbar p,
+.flowItem p {
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.iconButton,
+.quickActions button,
+.actionRow button {
+  align-items: center;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  color: #fff;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 12px;
+}
+
+.iconButton {
+  width: 40px;
+  padding: 0;
+}
+
+.overviewGrid,
+.workGrid {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.overviewGrid {
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.4fr);
+}
+
+.workGrid {
+  grid-template-columns: 360px minmax(460px, 1fr) 430px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.balance {
+  color: var(--teal);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 8px 12px;
+}
+
+.metricGrid span {
+  color: var(--muted);
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.serviceRow {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 34px;
+  padding: 0 10px;
+}
+
+.statusUp,
+.statusDown {
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 7px;
+}
+
+.statusUp {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.statusDown {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.actionRow {
+  align-items: end;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 82px;
+  margin-bottom: 10px;
+}
+
+.actionRow label {
+  display: grid;
+  gap: 6px;
+}
+
+.actionRow label span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.actionRow input {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  min-height: 38px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.actionRow button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.quickActions {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr;
+  margin-top: 14px;
+}
+
+.timeline {
+  display: grid;
+  gap: 8px;
+  max-height: 660px;
+  overflow: auto;
+}
+
+.eventRow {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(190px, 1.3fr) minmax(140px, 0.9fr) 78px 80px 88px 84px;
+  min-height: 42px;
+  padding: 7px 10px;
+  text-align: left;
+}
+
+.eventRow.selected {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.12);
+}
+
+.badge {
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  justify-content: center;
+  min-width: 0;
+  padding: 5px 8px;
+}
+
+.tone-red {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.tone-green {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.tone-yellow {
+  background: var(--yellow-soft);
+  color: var(--yellow);
+}
+
+.tone-blue {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.correlationHeader {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 6px;
+  grid-template-columns: 90px 1fr;
+  padding-bottom: 12px;
+}
+
+.correlationHeader span {
+  color: var(--muted);
+}
+
+.flowList {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+  max-height: 260px;
+  overflow: auto;
+}
+
+.flowItem {
+  align-items: start;
+  border-left: 3px solid var(--teal);
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 34px 1fr;
+  padding-left: 10px;
+}
+
+pre {
+  background: #111816;
+  border-radius: 6px;
+  color: #d5f4e6;
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0;
+  max-height: 280px;
+  overflow: auto;
+  padding: 12px;
+  white-space: pre-wrap;
+}
+
+.emptyState {
+  align-items: center;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  min-height: 90px;
+}
+
+@media (max-width: 1180px) {
+  .overviewGrid,
+  .workGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .eventRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: 14px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .balance {
+    font-size: 34px;
+  }
+
+  .metricGrid,
+  .serviceGrid,
+  .actionRow {
+    grid-template-columns: 1fr;
+  }
+}

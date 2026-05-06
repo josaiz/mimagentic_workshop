@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-banking-lab.local/events/movement-payload.schema.json",
+  "title": "Money Movement Payload",
+  "type": "object",
+  "required": ["movementId", "movementType", "sourceAccountId", "amount", "currency"],
+  "additionalProperties": true,
+  "properties": {
+    "movementId": { "type": "string", "minLength": 1 },
+    "movementType": {
+      "type": "string",
+      "enum": ["EXTERNAL_TRANSFER", "INVESTMENT_FUND", "MORTGAGE_REPAYMENT"]
+    },
+    "sourceAccountId": { "type": "string", "minLength": 1 },
+    "amount": { "type": "number" },
+    "currency": { "const": "EUR" },
+    "destinationIban": { "type": "string" },
+    "fundId": { "type": "string" },
+    "mortgageId": { "type": "string" },
+    "reason": { "type": "string" }
+  }
+}

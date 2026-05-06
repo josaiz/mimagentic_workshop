@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-banking-lab.local/events/notification-payload.schema.json",
+  "title": "Notification Payload",
+  "type": "object",
+  "required": ["notificationId", "message", "severity"],
+  "additionalProperties": true,
+  "properties": {
+    "notificationId": { "type": "string", "minLength": 1 },
+    "message": { "type": "string", "minLength": 1 },
+    "severity": { "type": "string", "enum": ["INFO", "SUCCESS", "WARNING", "ERROR"] }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "agentic-banking-lab",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Event-driven microservices workshop for agentic programming with OpenCode.",
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "demo:data": "python3 tools/demo-data-generator/generate.py --scenario morning"
+  },
+  "workspaces": [
+    "apps/web-dashboard",
+    "services/external-transfer-service",
+    "services/movement-orchestrator",
+    "services/event-log-service",
+    "services/notification-service",
+    "packages/event-contracts"
+  ],
+  "engines": {
+    "node": ">=24"
+  }
+}

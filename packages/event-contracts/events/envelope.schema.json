@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-banking-lab.local/events/envelope.schema.json",
+  "title": "Banking Event Envelope",
+  "type": "object",
+  "required": [
+    "eventId",
+    "eventType",
+    "eventVersion",
+    "occurredAt",
+    "producer",
+    "correlationId",
+    "causationId",
+    "idempotencyKey",
+    "aggregateId",
+    "payload"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "eventId": { "type": "string", "format": "uuid" },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "MoneyMovementRequested",
+        "SalaryReceived",
+        "AccountDebitReserved",
+        "AccountDebitRejected",
+        "AccountDebitCommitted",
+        "AccountDebitReleased",
+        "AccountCredited",
+        "ExternalTransferRequested",
+        "ExternalTransferCompleted",
+        "ExternalTransferRejected",
+        "FundContributionRequested",
+        "FundContributionCompleted",
+        "FundContributionRejected",
+        "MortgageRepaymentRequested",
+        "MortgageRepaymentCompleted",
+        "MortgageRepaymentRejected",
+        "NotificationCreated"
+      ]
+    },
+    "eventVersion": { "type": "integer", "minimum": 1 },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "producer": { "type": "string", "minLength": 1 },
+    "correlationId": { "type": "string", "format": "uuid" },
+    "causationId": { "type": ["string", "null"] },
+    "idempotencyKey": { "type": ["string", "null"] },
+    "aggregateId": { "type": ["string", "null"] },
+    "payload": { "type": "object" }
+  }
+}
