@@ -42,6 +42,8 @@ make test
 make down
 ```
 
+`make test` validates Compose config, TypeScript services, event schemas, the dashboard build, and Java unit tests. The Java Dockerfiles still target Java 25; local Maven tests use `JAVA_TEST_VERSION` with a default of `23` so the workshop repo can be checked on machines that do not have JDK 25 installed.
+
 ## Services
 
 | Service | Stack | Port | Purpose |
