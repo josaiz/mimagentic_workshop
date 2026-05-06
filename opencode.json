@@ -1,0 +1,87 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "rg *": "allow",
+      "find .opencode*": "allow",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "docker compose -f infra/docker-compose.yml config*": "allow",
+      "docker compose -f infra/docker-compose.yml ps*": "allow",
+      "docker compose -f infra/docker-compose.yml logs*": "ask",
+      "make ps": "allow",
+      "make logs": "ask",
+      "make up": "ask",
+      "make demo-data": "ask",
+      "make e2e": "ask",
+      "make test": "ask",
+      "npm test -w @agentic-banking-lab/event-contracts*": "allow",
+      "npm run build -w @agentic-banking-lab/web-dashboard*": "ask",
+      "python3 tools/demo-data-generator/generate.py*": "ask",
+      "python3 tools/e2e-smoke/run.py*": "ask",
+      "rm *": "deny",
+      "git reset*": "deny",
+      "git checkout --*": "deny"
+    },
+    "edit": "ask",
+    "webfetch": "allow",
+    "skill": {
+      "*": "ask",
+      "agentic-workflow-design": "allow",
+      "banking-domain": "allow",
+      "contract-drift-review": "allow",
+      "correlation-tracing": "allow",
+      "docker-compose-troubleshooting": "allow",
+      "event-driven-design": "allow",
+      "frontend-visualization": "allow",
+      "security-review": "allow",
+      "service-boundaries": "allow",
+      "testing-strategy": "allow",
+      "workshop-facilitation": "allow"
+    },
+    "banking_health": "allow",
+    "banking_events": "allow",
+    "banking_contractCatalog": "allow",
+    "banking_triggerFlow": "ask"
+  },
+  "formatter": {
+    "prettier": {
+      "command": ["npx", "prettier", "--write", "$FILE"],
+      "extensions": [".md", ".json", ".ts", ".tsx", ".js", ".mjs"]
+    }
+  },
+  "agent": {
+    "plan": {
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "ask",
+          "rg *": "allow",
+          "find .opencode*": "allow",
+          "git status*": "allow",
+          "git diff*": "allow",
+          "docker compose -f infra/docker-compose.yml config*": "allow",
+          "npm test -w @agentic-banking-lab/event-contracts*": "ask"
+        },
+        "task": {
+          "*": "ask",
+          "contract-drift-agent": "allow",
+          "flow-tracer-agent": "allow"
+        }
+      }
+    },
+    "build": {
+      "permission": {
+        "task": {
+          "*": "ask",
+          "contract-drift-agent": "allow",
+          "flow-tracer-agent": "allow",
+          "qa-agent": "allow",
+          "security-agent": "ask"
+        }
+      }
+    }
+  }
+}

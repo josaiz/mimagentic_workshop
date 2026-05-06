@@ -1,6 +1,6 @@
 COMPOSE=docker compose -f infra/docker-compose.yml
 
-.PHONY: up down logs ps restart demo-data test
+.PHONY: up down logs ps restart demo-data e2e test
 
 up:
 	$(COMPOSE) up --build
@@ -20,6 +20,10 @@ restart:
 
 demo-data:
 	python3 tools/demo-data-generator/generate.py --scenario morning
+
+e2e:
+	$(COMPOSE) up --build -d
+	python3 tools/e2e-smoke/run.py
 
 test:
 	$(COMPOSE) config >/dev/null

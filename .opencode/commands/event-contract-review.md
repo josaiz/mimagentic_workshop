@@ -1,13 +1,35 @@
 ---
-description: Review event schemas and emitted event behavior.
+description: Review event schemas, service emitters/consumers, dashboard assumptions, and docs for drift.
+agent: contract-drift-agent
+subtask: true
 ---
 
-Use `@event-architect-agent` guidance. Inspect `packages/event-contracts`, service publishers, and docs.
+Review the current event contract surface.
+
+Primary files:
+
+@packages/event-contracts/src/index.ts
+@packages/event-contracts/events/envelope.schema.json
+@packages/event-contracts/tests/envelope.test.mjs
+@docs/EVENTS.md
+@tools/e2e-smoke/run.py
+
+Current contract test result:
+
+!`npm test -w @agentic-banking-lab/event-contracts`
+
+Use the `contract-drift-review` and `event-driven-design` skills.
 
 Check:
-- PascalCase event names,
+
+- event enum/schema/docs agreement,
+- payload schema coverage,
+- service publishers and consumers,
+- dashboard timeline/detail assumptions,
+- e2e smoke expected events,
 - `eventVersion`,
 - `correlationId` propagation,
 - `causationId` correctness,
-- event payloads by flow,
-- docs alignment.
+- replay/idempotency expectations.
+
+Return findings first. If there is no drift, say so and list the remaining checks worth running before a workshop.
