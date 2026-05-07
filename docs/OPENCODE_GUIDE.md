@@ -18,6 +18,7 @@ This repo includes a project-local OpenCode lab under `.opencode/`. The goal is 
 Primary facilitator:
 
 - `workshop-agent`: guides live demos, coordinates subagents, and explains OpenCode concepts as they appear.
+- `backlog-task-agent`: intake agent for pasted Miro/Jira tasks; prepares commands, agent/skill reuse decisions, and backlog docs before implementation.
 
 Visible subagents:
 
@@ -60,6 +61,7 @@ Additional skills:
 - `correlation-tracing`: reconstruct timelines by correlation ID.
 - `contract-drift-review`: compare event enums, schemas, service code, tests, dashboard, and docs.
 - `agentic-workflow-design`: design OpenCode workflows that demonstrate agents, skills, commands, permissions, formatters, and tools.
+- `backlog-task-intake`: turn a pasted backlog task into OpenCode commands, reuse decisions, and workshop-ready backlog documentation.
 
 ## Commands
 
@@ -68,6 +70,7 @@ Architecture and teaching:
 ```text
 /opencode-map
 /explain-architecture
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard"
 /workshop-demo
 /workshop-readiness
 ```
@@ -108,6 +111,16 @@ Commands demonstrate OpenCode command features:
 - Delegation to visible and hidden subagents.
 
 ## Backlog Story Demo
+
+For any new Miro/Jira-style task, use the intake agent first:
+
+```text
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard"
+```
+
+The intake agent prepares workflow assets only. It does not implement the feature. It decides whether existing agents/skills are enough, creates commands, and updates `docs/BACKLOG_STORIES.md`.
+
+When the pasted card includes a task ID such as `TASK-98`, generated command names and filenames are prefixed with it, for example `/task-98-add-account-spending-power-endpoint` and `.opencode/commands/task-98-add-account-spending-power-endpoint.md`.
 
 The prepared backlog story is:
 

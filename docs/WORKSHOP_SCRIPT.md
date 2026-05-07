@@ -40,6 +40,14 @@ Run:
 
 Teaching point: OpenCode assets are part of the repo, so the workflow can be reviewed, versioned, and improved like code.
 
+Optional quick demo:
+
+```text
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard"
+```
+
+Teaching point: a vague board card can be converted into repeatable OpenCode workflow assets before anyone starts coding. If the card has an ID such as `TASK-97`, the generated command and filename keep that prefix for traceability.
+
 ## 10-20 Min: Architecture And Platform
 
 Run:
@@ -158,6 +166,14 @@ Do not run the full refactor unless you want the live coding portion to continue
 ```
 
 Teaching point: a backlog refactor can be handled by coordinated agents: architecture, Spring, QA, security, and generic PR review. The code stays in its “before” shape until the build command is actually run.
+
+If you want a simpler live task instead, paste one of the simple backlog stories into:
+
+```text
+/prepare-backlog-task "<task text from docs/BACKLOG_STORIES.md>"
+```
+
+Then run the generated development command.
 
 ## 55-60 Min: Readiness And Wrap
 

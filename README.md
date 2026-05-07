@@ -78,9 +78,9 @@ The repository now treats OpenCode workflow assets as first-class workshop mater
 
 - `AGENTS.md` for root agent guidance.
 - `opencode.json` for permissions, formatter configuration, built-in agent overrides, and custom tool safety.
-- `.opencode/agents/` for the primary workshop facilitator, visible specialist subagents, and hidden diagnostic subagents.
+- `.opencode/agents/` for the primary workshop facilitator, backlog intake, visible specialist subagents, and hidden diagnostic subagents.
 - `.opencode/skills/` for reusable procedures such as event design, contract drift review, correlation tracing, testing strategy, and workshop facilitation.
-- `.opencode/commands/` for repeatable workflows such as `/opencode-map`, `/design-investment-hexagonal`, `/trace-correlation`, `/event-contract-review`, `/security-review`, and `/workshop-readiness`.
+- `.opencode/commands/` for repeatable workflows such as `/opencode-map`, `/prepare-backlog-task`, `/design-investment-hexagonal`, `/trace-correlation`, `/event-contract-review`, `/security-review`, and `/workshop-readiness`.
 - `.opencode/tools/banking.ts` for project-specific OpenCode tools that check health, read events, compare contracts, and trigger guarded demo flows.
 
 See [docs/OPENCODE_GUIDE.md](docs/OPENCODE_GUIDE.md), [docs/WORKSHOP_SCRIPT.md](docs/WORKSHOP_SCRIPT.md), and [docs/BACKLOG_STORIES.md](docs/BACKLOG_STORIES.md).
