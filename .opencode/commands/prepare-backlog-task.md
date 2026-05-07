@@ -28,9 +28,17 @@ Prepare only workflow assets. Do not implement the product feature itself.
 Required output:
 
 - parsed task and classification;
+- detected task ID and normalized command prefix;
 - existing agents/skills to reuse;
 - whether any new agent or skill is needed;
 - command(s) created;
 - `docs/BACKLOG_STORIES.md` entry created or updated;
 - development entrypoint to run next;
 - verification commands.
+
+If the pasted task includes an identifier such as `TASK-98`, every generated command name and command filename must start with the normalized task ID, for example:
+
+```text
+/task-98-add-account-spending-power-endpoint
+.opencode/commands/task-98-add-account-spending-power-endpoint.md
+```

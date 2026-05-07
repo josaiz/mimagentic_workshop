@@ -70,7 +70,7 @@ Architecture and teaching:
 ```text
 /opencode-map
 /explain-architecture
-/prepare-backlog-task "Add a Money Allocation chart to the dashboard"
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard"
 /workshop-demo
 /workshop-readiness
 ```
@@ -115,10 +115,12 @@ Commands demonstrate OpenCode command features:
 For any new Miro/Jira-style task, use the intake agent first:
 
 ```text
-/prepare-backlog-task "Add a Money Allocation chart to the dashboard"
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard"
 ```
 
 The intake agent prepares workflow assets only. It does not implement the feature. It decides whether existing agents/skills are enough, creates commands, and updates `docs/BACKLOG_STORIES.md`.
+
+When the pasted card includes a task ID such as `TASK-98`, generated command names and filenames are prefixed with it, for example `/task-98-add-account-spending-power-endpoint` and `.opencode/commands/task-98-add-account-spending-power-endpoint.md`.
 
 The prepared backlog story is:
 

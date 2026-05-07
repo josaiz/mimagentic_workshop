@@ -7,7 +7,7 @@ This file captures workshop-ready backlog tasks that demonstrate agent orchestra
 Paste a Miro/Jira-style task into the intake command:
 
 ```text
-/prepare-backlog-task "Add a Money Allocation chart to the dashboard"
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard"
 ```
 
 The `backlog-task-agent` should:
@@ -16,6 +16,7 @@ The `backlog-task-agent` should:
 - inspect the repo;
 - reuse existing agents and skills where possible;
 - create one or two development commands;
+- prefix command names and filenames with the task ID when present, for example `TASK-98` -> `/task-98-add-account-spending-power-endpoint`;
 - update this file with acceptance criteria;
 - leave product implementation for the generated command.
 
@@ -26,6 +27,7 @@ Use `/review-changes` after any generated development command has made code chan
 ### Ticket
 
 ```text
+TASK-97
 Add a “Money Allocation” chart to the dashboard.
 
 As a workshop user, I want to see a demo allocation chart split between cash, completed investment contributions, and completed mortgage repayments, so I can understand the financial picture created by the event stream.
@@ -38,13 +40,13 @@ This is a small visual frontend task. It demonstrates how agents can inspect exi
 ### Suggested Intake
 
 ```text
-/prepare-backlog-task "Add a Money Allocation chart to the dashboard. Show Cash from availableBalance, Investments from FundContributionCompleted events, and Mortgage from MortgageRepaymentCompleted events. Do not add a charting library."
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard. Show Cash from availableBalance, Investments from FundContributionCompleted events, and Mortgage from MortgageRepaymentCompleted events. Do not add a charting library."
 ```
 
 Expected generated command:
 
 ```text
-/add-dashboard-allocation-chart
+/task-97-add-dashboard-allocation-chart
 ```
 
 ### Acceptance Criteria
@@ -75,6 +77,7 @@ npm run build -w @agentic-banking-lab/web-dashboard
 ### Ticket
 
 ```text
+TASK-98
 Create a spending power endpoint in account-service.
 
 As a workshop user, I want to check whether an account can reserve a requested amount before starting a movement, so I can understand how available funds are validated.
@@ -87,13 +90,13 @@ This is a small backend task. It exercises Spring controller design, validation,
 ### Suggested Intake
 
 ```text
-/prepare-backlog-task "Create GET /accounts/{accountId}/spending-power?amount=120&currency=EUR in account-service. Reuse AccountRules.canReserve and return whether funds are available."
+/prepare-backlog-task "TASK-98 Create GET /accounts/{accountId}/spending-power?amount=120&currency=EUR in account-service. Reuse AccountRules.canReserve and return whether funds are available."
 ```
 
 Expected generated command:
 
 ```text
-/add-account-spending-power-endpoint
+/task-98-add-account-spending-power-endpoint
 ```
 
 ### Acceptance Criteria
@@ -124,6 +127,7 @@ cd services/account-service && mvn -q -Djava.version=${JAVA_TEST_VERSION:-23} te
 ### Ticket
 
 ```text
+TASK-99
 Refactor `investment-service` to lightweight hexagonal architecture while preserving current Kafka behavior.
 ```
 
@@ -144,13 +148,13 @@ That makes it a good backlog story: the change is structural, behavior-preservin
 Plan the work without editing files:
 
 ```text
-/design-investment-hexagonal
+/task-99-design-investment-hexagonal
 ```
 
 Execute the refactor later in build mode:
 
 ```text
-/refactor-investment-hexagonal
+/task-99-refactor-investment-hexagonal
 ```
 
 Review the final diff with the generic review command:

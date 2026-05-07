@@ -11,15 +11,16 @@ Use this skill when a user pastes a backlog task and wants OpenCode assets prepa
 
 Examples:
 
-- “Add a Money Allocation chart to the dashboard.”
-- “Create spending power endpoint in account-service.”
-- “Refactor investment-service to hexagonal architecture.”
+- “TASK-97 Add a Money Allocation chart to the dashboard.”
+- “TASK-98 Create spending power endpoint in account-service.”
+- “TASK-99 Refactor investment-service to hexagonal architecture.”
 
 ## Inputs
 
 Start from the pasted task text. Extract:
 
 - title,
+- task identifier,
 - actor/user,
 - goal,
 - business or workshop value,
@@ -28,6 +29,34 @@ Start from the pasted task text. Extract:
 - implied affected subsystem,
 - estimated complexity,
 - unknowns.
+
+## Task Identifier Rules
+
+Backlog cards may start with an identifier such as:
+
+```text
+TASK-98
+Create endpoint de spending power en account-service
+```
+
+When an identifier is present:
+
+- preserve it in human-facing text as written, for example `TASK-98`;
+- normalize it to lowercase kebab-case for command names and filenames, for example `task-98`;
+- prefix every generated command name and command file with that normalized ID;
+- prefix the command `description` with `[TASK-98]`;
+- include the ID in `docs/BACKLOG_STORIES.md`.
+
+Examples:
+
+```text
+TASK-98 -> /task-98-add-account-spending-power-endpoint
+TASK-98 -> .opencode/commands/task-98-add-account-spending-power-endpoint.md
+TASK-99 -> /task-99-design-investment-hexagonal
+TASK-99 -> /task-99-refactor-investment-hexagonal
+```
+
+If no identifier exists, do not invent one.
 
 ## Repo Grounding
 
@@ -70,6 +99,7 @@ Create a new agent only when the task needs a reusable perspective not covered b
 
 - Simple task: generate one `/add-...` command.
 - Complex design/refactor/event-flow task: generate `/design-...` and `/add-...` or `/refactor-...`.
+- If a task ID exists, prefix those names: `/task-98-add-...`, `/task-99-design-...`, `/task-99-refactor-...`.
 - Commands must be grounded in real files with `@file` references.
 - Commands must include acceptance criteria and explicit scope boundaries.
 - Commands must instruct the implementer to run `/review-changes` after implementation.
@@ -79,6 +109,7 @@ Create a new agent only when the task needs a reusable perspective not covered b
 Update `docs/BACKLOG_STORIES.md` with:
 
 - title,
+- task ID when present,
 - ticket text,
 - why it works for the workshop,
 - generated commands,
@@ -93,6 +124,7 @@ Keep the text suitable for copying to Miro/Jira.
 Return:
 
 - `Parsed task`
+- `Detected task ID`
 - `Classification`
 - `Reuse decision`
 - `Generated assets`

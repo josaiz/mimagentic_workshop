@@ -43,10 +43,10 @@ Teaching point: OpenCode assets are part of the repo, so the workflow can be rev
 Optional quick demo:
 
 ```text
-/prepare-backlog-task "Add a Money Allocation chart to the dashboard"
+/prepare-backlog-task "TASK-97 Add a Money Allocation chart to the dashboard"
 ```
 
-Teaching point: a vague board card can be converted into repeatable OpenCode workflow assets before anyone starts coding.
+Teaching point: a vague board card can be converted into repeatable OpenCode workflow assets before anyone starts coding. If the card has an ID such as `TASK-97`, the generated command and filename keep that prefix for traceability.
 
 ## 10-20 Min: Architecture And Platform
 

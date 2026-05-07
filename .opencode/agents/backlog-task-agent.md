@@ -59,11 +59,12 @@ Convert a vague backlog item into:
 
 1. Load `backlog-task-intake` and `agentic-workflow-design`.
 2. Parse the pasted task into goal, actor, value, acceptance criteria, known constraints, and unknowns.
-3. Explore the repo before asking questions:
+3. Extract the task identifier if present, for example `TASK-98`, `AB-123`, or `#42`.
+4. Explore the repo before asking questions:
    - use `rg` and known folders to find likely code surfaces;
    - inspect existing agents, skills, and commands;
    - check whether a similar command already exists.
-4. Classify the task as one or more of:
+5. Classify the task as one or more of:
    - frontend,
    - backend endpoint,
    - event-flow,
@@ -71,14 +72,30 @@ Convert a vague backlog item into:
    - testing,
    - docs/workshop,
    - platform/ops.
-5. Prefer reusing existing agents and skills. Apply the 80% rule:
+6. Prefer reusing existing agents and skills. Apply the 80% rule:
    - if an existing agent/skill covers most of the job, reuse it;
    - create a new agent only for a durable perspective;
    - create a new skill only for a reusable procedure.
-6. Generate command assets:
+7. Generate command assets:
    - simple task: one `/add-...` command;
    - complex task: `/design-...` plus `/add-...` or `/refactor-...`.
-7. Update `docs/BACKLOG_STORIES.md` with a presentable workshop story.
+8. Update `docs/BACKLOG_STORIES.md` with a presentable workshop story.
+
+## Task ID Handling
+
+If the pasted task includes a task identifier, the generated command title and command filename must be prefixed with it.
+
+Examples:
+
+- pasted ID: `TASK-98`
+- normalized command prefix: `task-98`
+- generated command: `/task-98-add-account-spending-power-endpoint`
+- generated file: `.opencode/commands/task-98-add-account-spending-power-endpoint.md`
+- command description: `[TASK-98] Add account spending power endpoint.`
+
+Use the first clear identifier found near the top of the pasted task. Preserve the original uppercase ID in human-facing text and normalize it to lowercase kebab-case for command names and filenames.
+
+If no identifier is present, generate commands without a task prefix. Do not invent a task ID.
 
 ## Command Requirements
 
@@ -96,6 +113,8 @@ Every generated command should include:
 - verification commands;
 - final instruction to run `/review-changes` after implementation.
 
+When a task ID exists, the `description` must start with `[TASK-ID]`, and any generated design/build command filenames must start with the normalized ID.
+
 ## Guardrails
 
 - Do not edit product code for the task being prepared.
@@ -103,6 +122,7 @@ Every generated command should include:
 - Do not create new event contracts unless the task truly requires event changes.
 - Do not add production banking scope, auth, Kubernetes, Terraform, schema registry, or a production ledger.
 - Keep generated commands in English and kebab-case.
+- Keep task IDs visible and stable across command names, filenames, command descriptions, and `docs/BACKLOG_STORIES.md`.
 - Keep the board text human-readable and useful outside OpenCode.
 
 ## Output Contract
@@ -110,6 +130,7 @@ Every generated command should include:
 After preparing assets, return:
 
 - `Task classification`
+- `Detected task ID`, or `None`
 - `Generated command(s)`
 - `Agents reused`
 - `Skills reused`
